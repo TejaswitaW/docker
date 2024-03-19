@@ -1,0 +1,2 @@
+# excludes from build
+.env

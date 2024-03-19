@@ -1,0 +1,5 @@
+services:
+  web:
+    image: "nginx"
+  rcache:
+    image: "redis:${TAG}"

@@ -1,0 +1,13 @@
+services:
+  web:
+    image: "nginx"
+  rcache:
+    image: "redis:${TAG}"
+    profiles:
+      - rediscache
+  db:
+    image: mysql
+    # you can list of files
+    env_file:
+      - mysqlconfig.env
+

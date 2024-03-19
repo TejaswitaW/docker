@@ -1,0 +1,20 @@
+# use the official node.js image as the base image
+FROM node:18.17-slim AS development
+
+# set the working directory inside the container
+WORKDIR /react-project
+
+# copy package.json and package-lock.json to the container
+COPY package.json .
+
+# install dependencies
+RUN npm install
+
+# copying all the files in our project
+COPY . .
+
+# expose port 5173 for development server(not really necessary since it is handled by docker-compose)
+EXPOSE 5173
+
+# start the React development server with hot-reloading
+CMD ["npm","run","dev"]

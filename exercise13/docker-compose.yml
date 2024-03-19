@@ -1,0 +1,32 @@
+services:
+  web:
+    image: "nginx"
+    ports:
+      - "8000:80"
+      # host port 8000
+      # docker container port 80
+      # we have done binding
+    networks:
+      - proj_tk_network
+    # web depends on db and rcache
+    # first create db and rcache then create web
+    # the order in which start in the same order they will get removed
+    depends_on:
+      - db
+      - rcache
+  rcache:
+    image: "redis:${TAG}"
+    # profiles:
+    #   - rediscache
+    networks:
+      - proj_tk_network
+  db:
+    image: mysql
+    # you can list of files
+    env_file:
+      - mysqlconfig.env
+    networks:
+      - proj_tk_network
+networks:
+  proj_tk_network:
+    driver: bridge

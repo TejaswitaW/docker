@@ -1,0 +1,18 @@
+services:
+  web:
+    image: "nginx"
+    ports:
+      - "8000:80"
+      # host port 8000
+      # docker container port 80
+      # we have done binding
+  rcache:
+    image: "redis:${TAG}"
+    # profiles:
+    #   - rediscache
+  db:
+    image: mysql
+    # you can list of files
+    env_file:
+      - mysqlconfig.env
+

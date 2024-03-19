@@ -1,0 +1,9 @@
+services:
+  web:
+    image: "nginx"
+  rcache:
+    image: "redis:${TAG}"
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345

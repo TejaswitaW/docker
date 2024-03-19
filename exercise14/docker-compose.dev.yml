@@ -1,0 +1,8 @@
+services:
+  web:
+    image: "nginx"
+  db:
+    image: mysql
+    # you can list of files
+    env_file:
+      - mysqlconfig.env

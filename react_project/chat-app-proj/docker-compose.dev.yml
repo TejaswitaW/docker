@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+# you can give any name for this service
+  react-project-dev:
+    container_name: react-project-container
+    image: react-project-dev-image
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/react-project
+      # node_modules of project and container are isolated,to avoid conflict
+      - /react-project/node_modules
+    command: npm run dev 
